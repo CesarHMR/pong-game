@@ -23,4 +23,6 @@ func _on_GoalLeft_body_entered(body):
 
 func ResetGame():
 	ball.position = Vector2(400,300)
-	pass
+
+func _on_Timer_timeout() -> void:
+	ResetGame()
