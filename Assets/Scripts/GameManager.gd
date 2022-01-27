@@ -1,5 +1,5 @@
 extends Node
-var ball
+
 var leftText
 var rightText
 
@@ -7,7 +7,6 @@ var pointsLeft := 0
 var pointsRight := 0
 
 func _ready() -> void:
-	ball = $Ball
 	leftText = $TextLeft
 	rightText = $TextRight
 
@@ -22,7 +21,4 @@ func _on_GoalLeft_body_entered(body):
 	ResetGame()
 
 func ResetGame():
-	ball.position = Vector2(400,300)
-
-func _on_Timer_timeout() -> void:
-	ResetGame()
+	get_tree().call_group("BallGroup","ToggleBallSpeed")

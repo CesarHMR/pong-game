@@ -1,7 +1,8 @@
 extends KinematicBody2D
 
 export var offset = 30
-export var speed = 200
+export var speed = 0
+
 var velocity = Vector2.ZERO
 var ball
 
