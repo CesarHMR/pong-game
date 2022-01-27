@@ -21,4 +21,9 @@ func _on_GoalLeft_body_entered(body):
 	ResetGame()
 
 func ResetGame():
+	print("reset")
+	get_tree().call_group("BallGroup","ToggleBallSpeed")
+	get_node("RestartTimer").start()
+
+func _on_RestartTimer_timeout() -> void:
 	get_tree().call_group("BallGroup","ToggleBallSpeed")
