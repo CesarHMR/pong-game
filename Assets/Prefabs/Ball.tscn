@@ -1,10 +1,28 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Sprites/white-square.jpg" type="Texture" id=1]
 [ext_resource path="res://Assets/Scripts/Ball.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 24 )
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 0.734091 ), 0.0, 1.39851, 0, 0, Vector2( 0.983696, 0.0340909 ), -3.24706, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=3]
+curve = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 515.69
+initial_velocity_random = 0.38
+orbit_velocity = 1.0
+orbit_velocity_random = 0.0
+scale = 0.1
+scale_curve = SubResource( 3 )
 
 [node name="Ball" type="KinematicBody2D" groups=["BallGroup"]]
 script = ExtResource( 2 )
@@ -17,4 +35,14 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 1 )
+
+[node name="HitParticle" type="Particles2D" parent="."]
+scale = Vector2( 0.2, 0.2 )
+emitting = false
+amount = 30
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.69
+process_material = SubResource( 4 )
 texture = ExtResource( 1 )

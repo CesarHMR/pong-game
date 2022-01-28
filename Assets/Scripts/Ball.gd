@@ -2,8 +2,10 @@ extends KinematicBody2D
 
 var speed: float = 0
 var movement: Vector2 = Vector2.ONE
+var hitParticle : Particles2D
 
 func _ready():
+	hitParticle = $HitParticle
 	ToggleBallSpeed()
 
 func _physics_process(delta):
@@ -24,3 +26,4 @@ func ToggleBallSpeed() -> void:
 	else:
 		speed = 0
 		position = Vector2(640,360)
+	hitParticle.set_emitting(true)
